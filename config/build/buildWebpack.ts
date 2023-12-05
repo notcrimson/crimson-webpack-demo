@@ -16,6 +16,10 @@ export function buildWebpack(options: BuildOptions) {
       filename: "[name].[contenthash].js",
       path: paths.output,
       clean: true,
+      libraryExport: 'default',
+      libraryTarget: 'umd',
+      umdNamedDefine: true,
+      globalObject: 'typeof self === \'undefined\' ? this: self',
     },
     plugins: buildPlugins(options),
     module: {
