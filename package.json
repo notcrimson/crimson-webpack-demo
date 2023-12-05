@@ -1,8 +1,10 @@
 {
-  "name": "webpack-demo",
+  "name": "@crimson1234/crimson-webpack-demo",
   "version": "1.0.0",
-  "description": "",
-  "private": true,
+  "private": false,
+  "publishConfig": {
+    "@crimson1234:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "start": "webpack serve --env mode=development",
     "dev": "webpack --env mode=development",
@@ -40,5 +42,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
-  }
+  },
+  "main": "index.js",
+  "description": ""
 }
