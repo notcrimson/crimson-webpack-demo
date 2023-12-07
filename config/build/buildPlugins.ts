@@ -3,6 +3,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { BuildOptions } from "./types/types";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ESLintPlugin from "eslint-webpack-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
 
 export function buildPlugins({ mode, paths }: BuildOptions): Configuration['plugins'] {
   const isDev = mode === 'development';
@@ -15,6 +17,8 @@ export function buildPlugins({ mode, paths }: BuildOptions): Configuration['plug
 
   if (isDev) {
     //plugins.push(new webpack.ProgressPlugin())
+    plugins.push(new ForkTsCheckerWebpackPlugin());
+    plugins.push(new ReactRefreshWebpackPlugin());
   }
 
   if (isProd) {

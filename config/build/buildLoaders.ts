@@ -12,6 +12,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
       isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
       "css-loader"
     ],
+    exclude: /node_modules/,
   }
   const tsLoader = {
     // ts-loader умеет работать с JSX
@@ -20,8 +21,17 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     exclude: /node_modules/,
   }
 
+  const babelLoader = {
+    test: /\.m?tsx$/,
+    exclude: /node_modules/,
+    use: {
+      loader: "babel-loader",
+    },
+  }
+
   return [
     cssLoader,
-    tsLoader
+    // tsLoader,
+    babelLoader
   ]
 }
